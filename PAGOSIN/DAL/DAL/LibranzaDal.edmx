@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Libranzas.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="LibranzasStoreContainer" />
+        <Function Name="Ano_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Libranza" />
+        <Function Name="Dpto_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Libranza" />
+        <Function Name="Fuerza_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Libranza" />
+        <Function Name="Grado_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Libranza" />
+        <Function Name="Mes_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Libranza" />
+        <Function Name="Movimientos_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Libranza" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Libranzas" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PAGOSIN" p1:LazyLoadingEnabled="true" >
+          <FunctionImport Name="Ano_SelectAll" ReturnType="Collection(Libranzas.Ano_SelectAll_Result)" />
+          <FunctionImport Name="Dpto_SelectAll" ReturnType="Collection(Libranzas.Dpto_SelectAll_Result)" />
+          <FunctionImport Name="Fuerza_SelectAll" ReturnType="Collection(Libranzas.Fuerza_SelectAll_Result)" />
+          <FunctionImport Name="Grado_SelectAll" ReturnType="Collection(Libranzas.Grado_SelectAll_Result)" />
+          <FunctionImport Name="Mes_SelectAll" ReturnType="Collection(Libranzas.Mes_SelectAll_Result)" />
+          <FunctionImport Name="Movimientos_SelectAll" ReturnType="Collection(Libranzas.Movimientos_SelectAll_Result)" />
+        </EntityContainer>
+        <ComplexType Name="Ano_SelectAll_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Dpto_SelectAll_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Fuerza_SelectAll_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Grado_SelectAll_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Abreviado" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Mes_SelectAll_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="NumeroMes" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="Movimientos_SelectAll_Result">
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="FCuota" Nullable="true" MaxLength="200" />
+          <Property Type="Double" Name="Valor" Nullable="true" />
+          <Property Type="Int32" Name="IdDetalle" Nullable="true" />
+          <Property Type="Guid" Name="UserId" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LibranzasStoreContainer" CdmEntityContainer="PAGOSIN" >
+          <FunctionImportMapping FunctionImportName="Ano_SelectAll" FunctionName="Libranzas.Store.Ano_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Libranzas.Ano_SelectAll_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Dpto_SelectAll" FunctionName="Libranzas.Store.Dpto_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Libranzas.Dpto_SelectAll_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Fuerza_SelectAll" FunctionName="Libranzas.Store.Fuerza_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Libranzas.Fuerza_SelectAll_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Grado_SelectAll" FunctionName="Libranzas.Store.Grado_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Libranzas.Grado_SelectAll_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Abreviado" ColumnName="Abreviado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Mes_SelectAll" FunctionName="Libranzas.Store.Mes_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Libranzas.Mes_SelectAll_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="NumeroMes" ColumnName="NumeroMes" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Movimientos_SelectAll" FunctionName="Libranzas.Store.Movimientos_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Libranzas.Movimientos_SelectAll_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FCuota" ColumnName="FCuota" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="IdDetalle" ColumnName="IdDetalle" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
